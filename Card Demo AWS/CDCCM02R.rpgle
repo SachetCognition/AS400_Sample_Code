@@ -210,7 +210,7 @@
      C                   EVAL      STATUS = DSTATUS
      C                   EVAL      NAME = %TRIM(DNAME)
      C                   EVAL      EXPIRYMO = %DEC(DEXPIRYMO:2:0)
-     C                   EVAL      EXPIRYYR = %DEC(DEXPIRYYR:4:0)
+     C                   EVAL      EXPIRYYR = %DEC(DEXPIRYYR:2:0)
      C                   EVAL      PRIMARYSEC = DPRIMARYSEC
      C                   EVAL      CVV = %DEC(DCVV:3:0)
 
@@ -451,8 +451,8 @@
 
      C                   EVAL      EXPIRYMO = %SUBDT(%DATE:*MONTHS)
      C                   EVAL      DEXPIRYMO = %EDITC(EXPIRYMO:'X')
-     C                   EVAL      EXPIRYYR = %SUBDT(%DATE:*YEARS)
-     C                   EVAL      EXPIRYYR = EXPIRYYR + 5
+     C                   EVAL      EXPIRYYR = %REM((%SUBDT(%DATE:*YEARS) + 5)
+     C                                        : 100)
      C                   EVAL      DEXPIRYYR = %EDITC(EXPIRYYR:'X')
      C                   EVAL      DSTATUS = 'G'
      C                   EXSR      $STATUSDES

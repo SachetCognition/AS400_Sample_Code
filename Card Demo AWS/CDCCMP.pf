@@ -15,7 +15,7 @@
                   PRIMARYSEC     1A         TEXT('CC PRIMARY OR SECONDARY')
                   NAME          25A         TEXT('NAME ON CC')
                   EXPIRYMO       2P 0       TEXT('CC EXPIRY MONTH')
-                  EXPIRYYR       4P 0       TEXT('CC EXPIRY YEAR')
+                  EXPIRYYR       2P 0       TEXT('CC EXPIRY YEAR')
                   CVV            3S 0       TEXT('CC CVV')
                   STATUS         1A         TEXT('CC STATUS')
                   CCMCRTDT  R               REFFLD(CUSCRTDT)
