@@ -1,0 +1,120 @@
+﻿     A*****************************************************************         
+     A* FastBreed Technologies, Inc. © 2000                           *         
+     A*****************************************************************         
+     A*****************************************************************         
+     A**                                                             **         
+     A** OBJECT ID: IS926D1                                          **         
+     A**                                                             **         
+     A** OBJECT DESCRIPTION: MAINTAIN EXPENSE MASTER                 **         
+     A**                                                             **         
+     A** MOD#    DATE      DESCRIPTION                               **         
+     A** ----  --------    ----------------------------------------- **         
+     A**                                                             **         
+     A*****************************************************************         
+     A*                                                                         
+     A*%%EC                                                                     
+     A                                      DSPSIZ(24 80 *DS3)                  
+     A                                      PRINT(*LIBL/QSYSPRT)                
+     A                                      CF01(01 'Help')                     
+     A                                      CF03(03 'Exit')                     
+     A                                      CF23(23 'MOUSE PRESSSED')           
+     A                                      MOUBTN(*URR CF01)                   
+     A                                      MOUBTN(*ULR CF23)                   
+     A*                                                                         
+     A          R WDW006S                   SFL                                 
+     A*%%TS  SD  20000113  093141  JROCKWELL   REL-V4R4M0  5769-PW1             
+     A            VDUNQ1         5Y 0H                                          
+     A            SELIO          1Y 0B  8  3VALUES(0 1 4)                       
+     A                                      EDTCDE(4)                           
+     A            VDCDE1         3Y 0O  8  8EDTWRD('  0')                       
+     A            VDTYP1        20A  O  8 13                                    
+     A            VDDES1        40A  O  8 35                                    
+     A            VDMLT1         4Y 2O  8 76EDTWRD(' 0.  ')                     
+     A*                                                                         
+     A          R WDW006C                   SFLCTL(WDW006S)                     
+     A*%%TS  SD  20000113  141717  JROCKWELL   REL-V4R4M0  5769-PW1             
+     A                                      SFLSIZ(0015)                        
+     A                                      SFLPAG(0014)                        
+     A                                      CF06(06 'Add')                      
+     A                                      CF12(12 'Return')                   
+     A                                      PAGEDOWN                            
+     A                                      BLINK                               
+     A                                      OVERLAY                             
+     A  42                                  SFLDSP                              
+     A  41                                  SFLDSPCTL                           
+     A  40                                  SFLCLR                              
+     A  99                                  SFLEND(*MORE)                       
+     A                                      CSRLOC(VDROW      VDCOL)            
+     A                                      RTNCSRLOC(&REC &FLD)                
+     A                                      RTNCSRLOC(*MOUSE &ROW &COL)         
+     A            REC           10A  H                                          
+     A            FLD           10A  H                                          
+     A            ROW            3S 0H                                          
+     A            COL            3S 0H                                          
+     A            VDROW          3Y 0H                                          
+     A            VDCOL          3Y 0H                                          
+     A            XXED01         1A  P                                          
+     A            RCDNBR         4S 0H      SFLRCDNBR(CURSOR)                   
+     A                                  1  2SYSNAME                             
+     A                                  1 29' Maintain Expense Master '         
+     A                                      DSPATR(HI)                          
+     A                                      DSPATR(RI)                          
+     A                                  1 71DATE                                
+     A                                      EDTWRD('  /  /  ')                  
+     A                                  2  2USER                                
+     A                                  2 71TIME                                
+     A                                  4  2'Company Number:'                   
+     A                                      DSPATR(HI)                          
+     A            DFCMPX         5Y 0B  4 18DSPATR(&XXED01)                     
+     A                                      EDTCDE(Z)                           
+     A                                  5  2'Position to Code:'                 
+     A                                      DSPATR(HI)                          
+     A            DFCDEX         3Y 0B  5 20                                    
+     A                                  7  2'Sel'                               
+     A                                      DSPATR(HI)                          
+     A                                      DSPATR(UL)                          
+     A                                  7  7'Code'                              
+     A                                      DSPATR(HI)                          
+     A                                      DSPATR(UL)                          
+     A                                  7 13'Expense Type        '              
+     A                                      DSPATR(HI)                          
+     A                                      DSPATR(UL)                          
+     A                                  7 35'Expanded Description              -
+     A                                            '                             
+     A                                      DSPATR(HI)                          
+     A                                      DSPATR(UL)                          
+     A                                  7 76'Mult '                             
+     A                                      DSPATR(HI)                          
+     A                                      DSPATR(UL)                          
+     A*                                                                         
+     A          R CMD                                                           
+     A N28                                  OVERLAY                             
+     A                                 23  2'1=Select'                          
+     A                                      DSPATR(HI)                          
+     A                                 23 12'4=Delete'                          
+     A                                      DSPATR(HI)                          
+     A                                 23 22'F1=Help'                           
+     A                                      DSPATR(HI)                          
+     A                                 23 31'F3=Exit'                           
+     A                                      DSPATR(HI)                          
+     A                                 23 40'F6=Add'                            
+     A                                      DSPATR(HI)                          
+     A                                 23 48'F12=Return'                        
+     A                                      DSPATR(HI)                          
+     A*                                                                         
+     A          R SFLMSG                    SFL                                 
+     A                                      TEXT('MESSAGE SUBFILE')             
+     A                                      SFLMSGRCD(24)                       
+     A            MSGK                      SFLMSGKEY                           
+     A            MSGQ                      SFLPGMQ(10)                         
+     A*                                                                         
+     A          R SFLCTLM                   SFLCTL(SFLMSG)                      
+     A                                      TEXT('MESSAGE SUBFILE CONTROL')     
+     A                                      OVERLAY                             
+     A                                      SFLDSP                              
+     A N90                                  SFLDSPCTL                           
+     A N90                                  SFLINZ                              
+     A N90                                  SFLEND                              
+     A                                      SFLSIZ(0004)                        
+     A                                      SFLPAG(0001)                        
+     A            MSGQ                      SFLPGMQ(10)                         

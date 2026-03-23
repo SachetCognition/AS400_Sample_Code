@@ -1,0 +1,39 @@
+﻿     A*****************************************************************         
+     A* FastBreed Technologies, Inc. © 2000                           *         
+     A*****************************************************************         
+     A*****************************************************************         
+     A*                                                               *         
+     A*  OBJECT ID: IS926P1                                           *         
+     A*                                                               *         
+     A*  OBJECT DESCRIPTION: EXPENSE CODE MASTER FILE                 *         
+     A*                                                               *         
+     A*  MOD#   DATE  PGMR DESCRIPTION                                *         
+     A*  ----  ------ ---- -----------------------------------------  *         
+     A*                                                               *         
+     A*****************************************************************         
+     A*                                                                         
+     A*                                                                         
+     A          R R926P1                    TEXT('Expense Code Master File')    
+     A*                                                                         
+     A** Mandatory Fields                                                       
+     A            CMPUNQ         5S 0       TEXT('Company Unique Number')       
+     A            EXPUNQ         5S 0       TEXT('Expense Unique Number')       
+     A            EXPCDE         3S 0       TEXT('Expense Code')                
+     A            EXPTYP        20A         TEXT('Expense Short Description')   
+     A            EXPMLT         4S 2       TEXT('Expense Multiplier')          
+     A            EXPLIN         3S 0       TEXT('Expense Extended To Code')    
+     A            EXPSUB         3S 0       TEXT('Expense Subtotal Code')       
+     A*                                                                         
+     A** Optional Fields                                                        
+     A            EXPDES        40A         TEXT('Expense Long Description')    
+     A            EXPCAT        20A         TEXT('Expense G/L Ref#')            
+     A            EXPDET         1A         TEXT('Expense Details Required')    
+     A            EXPDEM         8S 2       TEXT('Expense Type Per Diem')       
+     A            EXPFRM         1A         TEXT('Expense Per Diem Firm Flag')  
+     A            EXPADV         1A         TEXT('Expense Cash Advance Flag')   
+     A            EXPDSP         1A         TEXT('Expense Dsp Flag')            
+     A*                                                                         
+     A*                                                                         
+     A          K CMPUNQ                                                        
+     A          K EXPCDE                                                        
+     A*                                                                         

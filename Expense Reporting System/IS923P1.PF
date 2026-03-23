@@ -1,0 +1,67 @@
+﻿     A*****************************************************************         
+     A* FastBreed Technologies, Inc. © 2000                           *         
+     A*****************************************************************         
+     A*****************************************************************         
+     A*                                                               *         
+     A*  OBJECT ID: IS923P1                                           *         
+     A*                                                               *         
+     A*  OBJECT DESCRIPTION: EXPENSE SUMMARY FILE                     *         
+     A*                                                               *         
+     A*  MOD#   DATE  PGMR DESCRIPTION                                *         
+     A*  ----  ------ ---- -----------------------------------------  *         
+     A*                                                               *         
+     A*****************************************************************         
+     A*                                                                         
+     A*                                                                         
+     A          R R923P1                    TEXT('Expense Summary File')        
+     A*                                                                         
+     A            CMPUNQ         5S 0       TEXT('Company Unique Number')       
+     A            EMPUNQ         5S 0       TEXT('Employee Unique Number')      
+     A            LINNBR         5S 0       TEXT('Line Number')                 
+     A*                                                                         
+     A            TRNDY1         3A         TEXT('Week Day 1')                  
+     A            TRNDY2         3A         TEXT('Week Day 2')                  
+     A            TRNDY3         3A         TEXT('Week Day 3')                  
+     A            TRNDY4         3A         TEXT('Week Day 4')                  
+     A            TRNDY5         3A         TEXT('Week Day 5')                  
+     A            TRNDY6         3A         TEXT('Week Day 6')                  
+     A            TRNDY7         3A         TEXT('Week Day 7')                  
+     A*                                                                         
+     A            TRNDT1         8S 0       TEXT('Week Date 1')                 
+     A            TRNDT2         8S 0       TEXT('Week Date 2')                 
+     A            TRNDT3         8S 0       TEXT('Week Date 3')                 
+     A            TRNDT4         8S 0       TEXT('Week Date 4')                 
+     A            TRNDT5         8S 0       TEXT('Week Date 5')                 
+     A            TRNDT6         8S 0       TEXT('Week Date 6')                 
+     A            TRNDT7         8S 0       TEXT('Week Date 7')                 
+     A*                                                                         
+     A            FRLOC1         9A         TEXT('From Location 1')             
+     A            FRLOC2         9A         TEXT('From Location 2')             
+     A            FRLOC3         9A         TEXT('From Location 3')             
+     A            FRLOC4         9A         TEXT('From Location 4')             
+     A            FRLOC5         9A         TEXT('From Location 5')             
+     A            FRLOC6         9A         TEXT('From Location 6')             
+     A            FRLOC7         9A         TEXT('From Location 7')             
+     A*                                                                         
+     A            TOLOC1         9A         TEXT('To Location 1')               
+     A            TOLOC2         9A         TEXT('To Location 2')               
+     A            TOLOC3         9A         TEXT('To Location 3')               
+     A            TOLOC4         9A         TEXT('To Location 4')               
+     A            TOLOC5         9A         TEXT('To Location 5')               
+     A            TOLOC6         9A         TEXT('To Location 6')               
+     A            TOLOC7         9A         TEXT('To Location 7')               
+     A*                                                                         
+     A            EXPCDE         3S 0       TEXT('Expense Code')                
+     A            EXPTYP        20A         TEXT('Expense Type')                
+     A            LINAMT        10S 2       TEXT('Expense Amount')              
+     A*                                                                         
+     A            EXPADV         1A         TEXT('Expense Cash Advance Flag')   
+     A            EXPLIN         3S 0       TEXT('Expense Extended To Code')    
+     A            EXPSUB         3S 0       TEXT('Expense Subtotal Code')       
+     A            EXPCAT        20A         TEXT('Expense G/L Ref#')            
+     A            EXPDSP         1A         TEXT('Expense Dsp Flag')            
+     A*                                                                         
+     A          K CMPUNQ                                                        
+     A          K EMPUNQ                                                        
+     A          K LINNBR                                                        
+     A*                                                                         

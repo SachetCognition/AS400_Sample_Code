@@ -1,0 +1,55 @@
+﻿     A*****************************************************************         
+     A* FastBreed Technologies, Inc. © 2000                           *         
+     A*****************************************************************         
+     A*****************************************************************         
+     A*                                                               *         
+     A*  OBJECT ID: IS929P1                                           *         
+     A*                                                               *         
+     A*  OBJECT DESCRIPTION: TRANSACTION FILE                         *         
+     A*                                                               *         
+     A*  MOD#   DATE  PGMR DESCRIPTION                                *         
+     A*  ----  ------ ---- -----------------------------------------  *         
+     A*                                                                         
+     A*****************************************************************         
+     A*                                                                         
+     A*                                                                         
+     A          R R929P1                    TEXT('Transaction File')            
+     A*                                                                         
+     A** Company-related fields                                                 
+     A            CMPUNQ         5S 0       TEXT('Company Unique Number')       
+     A            CMPNME        40A         TEXT('Company Name')                
+     A*                                                                         
+     A** Employee-related fields                                                
+     A            EMPUNQ         5S 0       TEXT('Employee Unique Number')      
+     A            EMPNBR         8S 0       TEXT('Employee Visible Number')     
+     A            EMPNME        40A         TEXT('Employee Name')               
+     A            EMPDPT         6S 0       TEXT('Employee Dept')               
+     A*                                                                         
+     A** Project-related fields                                                 
+     A            PRJUNQ         5S 0       TEXT('Project Unique Number')       
+     A            PRJNME        40A         TEXT('Project Description')         
+     A*                                                                         
+     A** Cost Center-related fields                                             
+     A            CSTUNQ         5S 0       TEXT('Cost Center Unique Number')   
+     A            CSTNME        40A         TEXT('Cost Center Description')     
+     A*                                                                         
+     A** Expense-related fields                                                 
+     A            EXPUNQ         5S 0       TEXT('Expense Unique Number')       
+     A            EXPCDE         3S 0       TEXT('Expense Sort Code')           
+     A            EXPTYP        20A         TEXT('Expense Type')                
+     A            EXPMLT         4S 2       TEXT('Expense Multiplier')          
+     A            EXPADV         1A         TEXT('Expense Cash Advance Flag')   
+     A            EXPLIN         3S 0       TEXT('Expense Extended To Code')    
+     A*                                                                         
+     A** Transaction-related fields                                             
+     A            TRNUNQ         5S 0       TEXT('Transaction Unique Number')   
+     A            TRNDTE         8S 0       TEXT('Transaction Date')            
+     A            TRNAMT         8S 2       TEXT('Transaction Amount/Quantity') 
+     A            TRNLC1         9A         TEXT('Transaction From Location')   
+     A            TRNLC2         9A         TEXT('Transaction To Location')     
+     A            TRNDET        60A         TEXT('Transaction Details')         
+     A*                                                                         
+     A          K CMPUNQ                                                        
+     A          K EMPUNQ                                                        
+     A          K TRNDTE                                                        
+     A          K TRNUNQ                                                        

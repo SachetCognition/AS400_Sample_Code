@@ -1,0 +1,57 @@
+﻿     A*****************************************************************         
+     A* FastBreed Technologies, Inc. © 2000                           *         
+     A*****************************************************************         
+     A*****************************************************************         
+     A**                                                             **         
+     A** OBJECT ID: IS924D1                                          **         
+     A**                                                             **         
+     A** OBJECT DESCRIPTION: PROJECT NUMBER SEARCH                   **         
+     A**                                                             **         
+     A**                                                             **         
+     A*****************************************************************         
+     A*                                                                         
+     A*%%EC                                                                     
+     A                                      DSPSIZ(24 80 *DS3)                  
+     A                                      CHGINPDFT(UL)                       
+     A                                      CA03(03)                            
+     A                                      PAGEDOWN                            
+     A          R WDW006S                   SFL                                 
+     A            SELIO          1Y 0B  6  2VALUES(0 1) EDTCDE(Z)               
+     A            VDUNQ1         5Y 0O  6  5EDTCDE(Z)                           
+     A            VDNME1        40A  O  6 12                                    
+     A*                                                                         
+     A          R WDW006C                   SFLCTL(WDW006S)                     
+     A                                      WINDOW(WDW006W)                     
+     A                                      BLINK                               
+     A                                      OVERLAY                             
+     A  42                                  SFLDSP                              
+     A  41                                  SFLDSPCTL                           
+     A  40                                  SFLCLR                              
+     A  99                                  SFLEND(*MORE)                       
+     A                                      SFLSIZ(0011)                        
+     A                                      SFLPAG(0010)                        
+     A            RCDNBR         4S 0H      SFLRCDNBR                           
+     A                                  1 28' PROJECT CODE SELECTION '          
+     A                                      DSPATR(HI RI)                       
+     A                                  3  1'Position to Project . .'           
+     A                                      DSPATR(HI)                          
+     A            NCPROJ        20A  B  3 25CHECK(LC)                           
+     A                                  5  1'Sel'                               
+     A                                      DSPATR(HI UL)                       
+     A                                  5  6'Code'                              
+     A                                      DSPATR(HI UL)                       
+     A                                  5 12'Project Description           -    
+     A                                                '                         
+     A                                      DSPATR(HI UL)                       
+     A*                                                                         
+     A          R WDW006W                   WINDOW(3 2 18 75)                   
+     A                                 17  1'1=Select'                          
+     A                                      DSPATR(HI)                          
+     A                                 17 11'F3=Exit'                           
+     A                                      DSPATR(HI)                          
+     A*                                                                         
+     A          R DUMMY                     ASSUME                              
+     A                                  1  3' '                                 
+     A*                                                                         
+     A          R BOTTOM                                                        
+     A                                 24  3' '                                 

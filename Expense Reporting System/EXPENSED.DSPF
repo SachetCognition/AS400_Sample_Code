@@ -1,0 +1,80 @@
+﻿     A*****************************************************************         
+     A* FastBreed Technologies, Inc. © 2000                           *         
+     A*****************************************************************         
+     A*****************************************************************         
+     A**                                                             **         
+     A** OBJECT ID: EXPENSED                                         **         
+     A**                                                             **         
+     A** OBJECT DESCRIPTION: EXPENSE REPORT SYSTEM                   **         
+     A**                                                             **         
+     A**                                                             **         
+     A*****************************************************************         
+     A*                                                                         
+     A*%%EC                                                                     
+     A                                      DSPSIZ(24 80 *DS3)                  
+     A                                      CHGINPDFT(UL)                       
+     A                                      CA03(03)                            
+     A                                      PAGEDOWN                            
+     A          R EXP000S                   SFL                                 
+     A*%%TS  SD  19990928  082735  JROCKWELL   REL-V4R2M0  5769-PW1             
+     A            VDOPTP        10A  H                                          
+     A            SELIO          1A  B  7  3                                    
+     A            VDOPTN         2Y 0O  7 10EDTCDE(Z)                           
+     A            VDOPTD        40A  O  7 17                                    
+     A*                                                                         
+     A          R EXP000C                   SFLCTL(EXP000S)                     
+     A*%%TS  SD  20000117  082818  JROCKWELL   REL-V4R4M0  5769-PW1             
+     A                                      SFLSIZ(0015)                        
+     A                                      SFLPAG(0014)                        
+     A                                      BLINK                               
+     A                                      OVERLAY                             
+     A  42                                  SFLDSP                              
+     A  41                                  SFLDSPCTL                           
+     A  40                                  SFLCLR                              
+     A  99                                  SFLEND(*MORE)                       
+     A            RCDNBR         4S 0H      SFLRCDNBR                           
+     A                                  1  2SYSNAME                             
+     A                                  1 29' Expense Report System '           
+     A                                      DSPATR(HI)                          
+     A                                      DSPATR(RI)                          
+     A                                  1 71DATE                                
+     A                                      EDTWRD('  /  /  ')                  
+     A                                  2  2USER                                
+     A                                  2 71TIME                                
+     A                                  4  2'Option:'                           
+     A                                      DSPATR(HI)                          
+     A            DFOPTX         2Y 0I  4 10                                    
+     A                                  6  2'Sel'                               
+     A                                      DSPATR(HI)                          
+     A                                      DSPATR(UL)                          
+     A                                  6  8'Option'                            
+     A                                      DSPATR(HI)                          
+     A                                      DSPATR(UL)                          
+     A                                  6 17'Type of Inquiry                   -
+     A                                            '                             
+     A                                      DSPATR(HI)                          
+     A                                      DSPATR(UL)                          
+     A*                                                                         
+     A          R CSFLCMD                                                       
+     A                                      OVERLAY                             
+     A                                 23  2'1=Select'                          
+     A                                      DSPATR(HI)                          
+     A                                 23 12'F3=Exit'                           
+     A                                      DSPATR(HI)                          
+     A*                                                                         
+     A          R SFLMSG                    SFL                                 
+     A                                      TEXT('MESSAGE SUBFILE')             
+     A                                      SFLMSGRCD(24)                       
+     A            MSGK                      SFLMSGKEY                           
+     A            MSGQ                      SFLPGMQ(10)                         
+     A*                                                                         
+     A          R SFLCTLM                   SFLCTL(SFLMSG)                      
+     A                                      TEXT('MESSAGE SUBFILE CONTROL')     
+     A                                      OVERLAY                             
+     A                                      SFLDSP                              
+     A N90                                  SFLDSPCTL                           
+     A N90                                  SFLINZ                              
+     A N90                                  SFLEND                              
+     A                                      SFLSIZ(0004)                        
+     A                                      SFLPAG(0001)                        
+     A            MSGQ                      SFLPGMQ(10)                         

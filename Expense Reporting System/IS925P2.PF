@@ -1,0 +1,21 @@
+﻿     A*****************************************************************         
+     A* FastBreed Technologies, Inc. © 2000                           *         
+     A*****************************************************************         
+     A*****************************************************************         
+     A*                                                               *         
+     A*  OBJECT ID: IS925P2                                           *         
+     A*                                                               *         
+     A*  OBJECT DESCRIPTION: COMPANY MASTER NEXT NUMBER FILE          *         
+     A*                                                               *         
+     A*  MOD#   DATE  PGMR DESCRIPTION                                *         
+     A*  ----  ------ ---- -----------------------------------------  *         
+     A*                                                               *         
+     A*****************************************************************         
+     A*                                                                         
+     A*                                                                         
+     A          R R925P2                    TEXT('Cmp Mst Next Nbr File')       
+     A*                                                                         
+     A            KEYFLD         1S 0       TEXT('Key Field')                   
+     A            NXTUNQ         5S 0       TEXT('Next Company Number')         
+     A*                                                                         
+     A          K KEYFLD                                                        

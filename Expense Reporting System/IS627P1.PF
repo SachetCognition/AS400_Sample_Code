@@ -1,0 +1,46 @@
+﻿     A*****************************************************************         
+     A* FastBreed Technologies, Inc. © 2000                           *         
+     A*****************************************************************         
+     A*****************************************************************         
+     A*                                                               *         
+     A*  OBJECT ID: IS627P1                                           *         
+     A*                                                               *         
+     A*  OBJECT DESCRIPTION: COST CENTER MASTER FILE                  *         
+     A*                                                               *         
+     A*  MOD#   DATE  PGMR DESCRIPTION                                *         
+     A*  ----  ------ ---- -----------------------------------------  *         
+     A*                                                               *         
+     A*****************************************************************         
+     A*                                                                         
+     A*                                                                         
+     A          R R627P1                    TEXT('Cost Center Master File')     
+     A*                                                                         
+     A            CMPUNQ         5S 0       TEXT('Company Unique Number')       
+     A            CSTUNQ         5S 0       TEXT('Cost Center Unique Number')   
+     A            CSTNME        40A         TEXT('Cost Center Description')     
+     A            CSTDSP         1A         TEXT('Cost Center Active')          
+     A*                                                                         
+     A** Tracking Information                                                   
+     A            CSTCBY        10A         TEXT('Created By                  ')
+     A            CSTCDT         8S 0       TEXT('Created Date                ')
+     A            CSTCTM         6S 0       TEXT('Created Time                ')
+     A            CSTCAM         1A         TEXT('Created AM/PM               ')
+     A*                                                                         
+     A            CSTUBY        10A         TEXT('Updated By                  ')
+     A            CSTUDT         8S 0       TEXT('Updated Date                ')
+     A            CSTUTM         6S 0       TEXT('Updated Time                ')
+     A            CSTUAM         1A         TEXT('Updated AM/PM               ')
+     A*                                                                         
+     A            CSTDBY        10A         TEXT('Deleted By                  ')
+     A            CSTDDT         8S 0       TEXT('Deleted Date                ')
+     A            CSTDTM         6S 0       TEXT('Deleted Time                ')
+     A            CSTDAM         1A         TEXT('Deleted AM/PM               ')
+     A*                                                                         
+     A            CSTUNB        10A         TEXT('Undeleted By                ')
+     A            CSTUND         8S 0       TEXT('Undeleted Date              ')
+     A            CSTUNT         6S 0       TEXT('Undeleted Time              ')
+     A            CSTUNA         1A         TEXT('Undeleted AM/PM             ')
+     A*                                                                         
+     A          K CMPUNQ                                                        
+     A          K CSTNME                                                        
+     A*                                                                         

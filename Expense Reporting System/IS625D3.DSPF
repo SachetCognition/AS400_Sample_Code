@@ -1,0 +1,148 @@
+﻿     A*****************************************************************         
+     A* FastBreed Technologies, Inc. © 2000                           *         
+     A*****************************************************************         
+     A*****************************************************************         
+     A**                                                             **         
+     A** OBJECT ID: IS625D3                                          **         
+     A**                                                             **         
+     A** OBJECT DESCRIPTION: MAINTAIN COMPANY MASTER - CHG MODE      **         
+     A**                                                             **         
+     A** MOD#    DATE      DESCRIPTION                               **         
+     A** ----  --------    ----------------------------------------- **         
+     A**                                                             **         
+     A*****************************************************************         
+     A*%%EC                                                                     
+     A                                      DSPSIZ(24 80 *DS3)                  
+     A                                      PRINT                               
+     A                                      CF01(01)                            
+     A                                      CF03(03)                            
+     A                                      CF12(12)                            
+     A                                      MOUBTN(*URR CF01)                   
+     A                                      MOUBTN(*ULR CF23)                   
+     A                                      CF23(23 'MOUSE PRESSSED')           
+     A*                                                                         
+     A          R DSP01                                                         
+     A*%%TS  SD  20000117  135325  JROCKWELL   REL-V4R4M0  5769-PW1             
+     A                                      BLINK                               
+     A                                      OVERLAY                             
+     A                                      CSRLOC(VDROW      VDCOL)            
+     A                                      RTNCSRLOC(&REC &FLD)                
+     A                                      RTNCSRLOC(*MOUSE &ROW &COL)         
+     A            REC           10A  H                                          
+     A            FLD           10A  H                                          
+     A            ROW            3S 0H                                          
+     A            COL            3S 0H                                          
+     A            VDROW          3Y 0H                                          
+     A            VDCOL          3Y 0H                                          
+     A            XXED01         1A  P                                          
+     A            XXED02         1A  P                                          
+     A            XXED03         1A  P                                          
+     A            XXED04         1A  P                                          
+     A            XXED05         1A  P                                          
+     A            XXED06         1A  P                                          
+     A            XXED07         1A  P                                          
+     A            XXED08         1A  P                                          
+     A            XXED09         1A  P                                          
+     A            XXED10         1A  P                                          
+     A            XXED11         1A  P                                          
+     A            XXED12         1A  P                                          
+     A            XXED13         1A  P                                          
+     A            XXED14         1A  P                                          
+     A            XXED15         1A  P                                          
+     A            XXED16         1A  P                                          
+     A            XXED17         1A  P                                          
+     A            XXED18         1A  P                                          
+     A            XXED19         1A  P                                          
+     A            XXED20         1A  P                                          
+     A            XXED21         1A  P                                          
+     A            XXED22         1A  P                                          
+     A                                  1  2SYSNAME                             
+     A                                  1 27' Change Company Information '      
+     A                                      DSPATR(HI)                          
+     A                                      DSPATR(RI)                          
+     A                                  1 71DATE                                
+     A                                      EDTWRD('  /  /  ')                  
+     A                                  2  2USER                                
+     A                                  2 71TIME                                
+     A                                  4  2'Company Name:'                     
+     A                                      DSPATR(HI)                          
+     A            DFNMEX        40A  B  4 16DSPATR(&XXED01) CHECK(LC)           
+     A                                  4 59'Nbr:'                              
+     A                                      DSPATR(HI)                          
+     A            DFUNQX         5Y 0O  4 64EDTCDE(Z)                           
+     A                                  6  2'Address Information'               
+     A                                      DSPATR(HI)                          
+     A                                      DSPATR(UL)                          
+     A                                  7  2'Address Line 1:'                   
+     A            DFAD1X        25A  B  7 18DSPATR(&XXED05) CHECK(LC)           
+     A                                  8  2'Address Line 2:'                   
+     A            DFAD2X        25A  B  8 18DSPATR(&XXED06) CHECK(LC)           
+     A                                  9  2'City. . . . . .'                   
+     A            DFCTYX        20A  B  9 18DSPATR(&XXED07) CHECK(LC)           
+     A                                  9 40'State:'                            
+     A            DFSTEX         2A  B  9 47DSPATR(&XXED08)                     
+     A                                  9 51'Zip:'                              
+     A            DFZP5X         5Y 0B  9 56EDTCDE(Z)                           
+     A                                      DSPATR(&XXED09)                     
+     A            DFZP4X         4Y 0B  9 62EDTCDE(Z)                           
+     A                                      DSPATR(&XXED10)                     
+     A                                 11  2'Contact Information'               
+     A                                      DSPATR(HI)                          
+     A                                      DSPATR(UL)                          
+     A                                 12  2'Contact #1:'                       
+     A            DFCN1X        40A  B 12 14DSPATR(&XXED11)  CHECK(LC)          
+     A                                 13  2'Phone . . .'                       
+     A            DFPH1X        15A  B 13 14DSPATR(&XXED12)                     
+     A                                 13 31'Fax:'                              
+     A            DFFX1X        15A  B 13 36DSPATR(&XXED13)                     
+     A                                 13 53'Pager:'                            
+     A            DFPG1X        15A  B 13 60DSPATR(&XXED14)                     
+     A                                 14  2'Contact #2:'                       
+     A            DFCN2X        40A  B 14 14DSPATR(&XXED15)  CHECK(LC)          
+     A                                 15  2'Phone . . .'                       
+     A            DFPH2X        15A  B 15 14DSPATR(&XXED16)                     
+     A                                 15 31'Fax:'                              
+     A            DFFX2X        15A  B 15 36DSPATR(&XXED17)                     
+     A                                 15 53'Pager:'                            
+     A            DFPG2X        15A  B 15 60DSPATR(&XXED18)                     
+     A                                 17  2'Miscellaneous Information'         
+     A                                      DSPATR(HI)                          
+     A                                      DSPATR(UL)                          
+     A                                 18  2'Company level per diem default:'   
+     A            DFDEMX         8Y 2B 18 34EDTWRD('     0.  ')                 
+     A                                      DSPATR(&XXED19)                     
+     A                                 18 45'Per Diem firm flag:'               
+     A            DFFRMX         1A  B 18 65DSPATR(&XXED02)                     
+     A                                 19  2'Project numbers required (Y/N):'   
+     A            DFRQ1X         1A  B 19 34DSPATR(&XXED03)                     
+     A                                 19 45'Cost ctr req (Y/N):'               
+     A            DFRQ2X         1A  B 19 65DSPATR(&XXED04)                     
+     A                                 19 68'Week Str:'                         
+     A            DFSTRX         3A  B 19 78DSPATR(&XXED22)                     
+     A                                 20  2'Misc #1:'                          
+     A            DFDT1X        70A  B 20 11DSPATR(&XXED20) CHECK(LC)           
+     A                                 21  2'Misc #2:'                          
+     A            DFDT2X        70A  B 21 11DSPATR(&XXED21) CHECK(LC)           
+     A                                 23  2'F1=Help'                           
+     A                                      DSPATR(HI)                          
+     A                                 23 11'F3=Exit'                           
+     A                                      DSPATR(HI)                          
+     A                                 23 20'F12=Return'                        
+     A                                      DSPATR(HI)                          
+     A*                                                                         
+     A          R SFLMSG                    SFL                                 
+     A                                      TEXT('MESSAGE SUBFILE')             
+     A                                      SFLMSGRCD(24)                       
+     A            MSGK                      SFLMSGKEY                           
+     A            MSGQ                      SFLPGMQ(10)                         
+     A*                                                                         
+     A          R SFLCTLM                   SFLCTL(SFLMSG)                      
+     A                                      TEXT('MESSAGE SUBFILE CONTROL')     
+     A                                      OVERLAY                             
+     A                                      SFLDSP                              
+     A N90                                  SFLDSPCTL                           
+     A N90                                  SFLINZ                              
+     A N90                                  SFLEND                              
+     A                                      SFLSIZ(0004)                        
+     A                                      SFLPAG(0001)                        
+     A            MSGQ                      SFLPGMQ(10)                         

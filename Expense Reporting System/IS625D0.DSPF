@@ -1,0 +1,98 @@
+﻿     A*%%TS  SD  20051016  092530  CMPINZUSR   REL-V5R3M0  5722-WDS             
+     A*****************************************************************         
+     A* FastBreed Technologies, Inc. © 2000                           *         
+     A*****************************************************************         
+     A*****************************************************************         
+     A**                                                             **         
+     A** OBJECT ID: IS625D0                                          **         
+     A**                                                             **         
+     A** OBJECT DESCRIPTION: SYSTEM SETUP                            **         
+     A**                                                             **         
+     A** MOD#    DATE      DESCRIPTION                               **         
+     A** ----  --------    ----------------------------------------- **         
+     A**                                                             **         
+     A*****************************************************************         
+     A*                                                                         
+     A*%%EC                                                                     
+     A                                      DSPSIZ(24 80 *DS3)                  
+     A                                      PRINT(*LIBL/QSYSPRT)                
+     A                                      CF01(01 'Help')                     
+     A                                      CF03(03 'Exit')                     
+     A*                                                                         
+     A          R DSP01                                                         
+     A*%%TS  SD  20051016  092530  CMPINZUSR   REL-V5R3M0  5722-WDS             
+     A                                      BLINK                               
+     A                                      OVERLAY                             
+     A                                      CF12(12 'Return')                   
+     A                                      CSRLOC(VDROW      VDCOL)            
+     A                                      RTNCSRLOC(&REC &FLD)                
+     A                                      RTNCSRLOC(*MOUSE &ROW &COL)         
+     A            REC           10A  H                                          
+     A            FLD           10A  H                                          
+     A            ROW            3S 0H                                          
+     A            COL            3S 0H                                          
+     A            VDROW          3Y 0H                                          
+     A            VDCOL          3Y 0H                                          
+     A            XXED01         1A  P                                          
+     A            XXED02         1A  P                                          
+     A            XXED03         1A  P                                          
+     A            XXED04         1A  P                                          
+     A            XXED05         1A  P                                          
+     A            XXED06         1A  P                                          
+     A            XXED07         1A  P                                          
+     A            XXED08         1A  P                                          
+     A                                  1  2SYSNAME                             
+     A                                  1 34' System Setup '                    
+     A                                      DSPATR(HI)                          
+     A                                      DSPATR(RI)                          
+     A                                  1 71DATE                                
+     A                                      EDTWRD('  /  /  ')                  
+     A                                  2  2USER                                
+     A                                  2 71TIME                                
+     A                                  4  2'Define User Access to Menu. . . . -
+     A                                      .'                                  
+     A            DFSEL1         1A  B  4 38DSPATR(&XXED01)                     
+     A                                  6  2'Define Companies. . . . . . . . . -
+     A                                      .'                                  
+     A            DFSEL2         1A  B  6 38DSPATR(&XXED02)                     
+     A                                  7  2'Define User Access to Companies . -
+     A                                      .'                                  
+     A            DFSEL3         1A  B  7 38DSPATR(&XXED03)                     
+     A                                  9  2'Define Cost Centers . . . . . . . -
+     A                                      .'                                  
+     A            DFSEL4         1A  B  9 38DSPATR(&XXED04)                     
+     A                                 10  2'Define User Access to Cost Centers-
+     A                                      .'                                  
+     A            DFSEL5         1A  B 10 38DSPATR(&XXED05)                     
+     A                                 12  2'Define Projects . . . . . . . . . -
+     A                                      .'                                  
+     A            DFSEL6         1A  B 12 38DSPATR(&XXED06)                     
+     A                                 13  2'Define User Access to Projects. . -
+     A                                      .'                                  
+     A            DFSEL7         1A  B 13 38DSPATR(&XXED07)                     
+     A                                 15  2'Define Expense Codes. . . . . . . -
+     A                                      .'                                  
+     A            DFSEL8         1A  B 15 38DSPATR(&XXED08)                     
+     A                                 23  2'F1=Help'                           
+     A                                      DSPATR(HI)                          
+     A                                 23 11'F3=Exit'                           
+     A                                      DSPATR(HI)                          
+     A                                 23 20'F12=Return'                        
+     A                                      DSPATR(HI)                          
+     A*                                                                         
+     A          R SFLMSG                    SFL                                 
+     A                                      TEXT('MESSAGE SUBFILE')             
+     A                                      SFLMSGRCD(24)                       
+     A            MSGK                      SFLMSGKEY                           
+     A            MSGQ                      SFLPGMQ(10)                         
+     A*                                                                         
+     A          R SFLCTLM                   SFLCTL(SFLMSG)                      
+     A                                      TEXT('MESSAGE SUBFILE CONTROL')     
+     A                                      OVERLAY                             
+     A                                      SFLDSP                              
+     A N90                                  SFLDSPCTL                           
+     A N90                                  SFLINZ                              
+     A N90                                  SFLEND                              
+     A                                      SFLSIZ(0004)                        
+     A                                      SFLPAG(0001)                        
+     A            MSGQ                      SFLPGMQ(10)                         

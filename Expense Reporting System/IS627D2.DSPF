@@ -1,0 +1,78 @@
+﻿     A*****************************************************************         
+     A* FastBreed Technologies, Inc. © 2000                           *         
+     A*****************************************************************         
+     A*****************************************************************         
+     A**                                                             **         
+     A** OBJECT ID: IS627D2                                          **         
+     A**                                                             **         
+     A** OBJECT DESCRIPTION: MAINTAIN COST CENTERS - ADD MODE        **         
+     A**                                                             **         
+     A** MOD#    DATE      DESCRIPTION                               **         
+     A** ----  --------    ----------------------------------------- **         
+     A**                                                             **         
+     A*****************************************************************         
+     A*                                                                         
+     A*%%EC                                                                     
+     A                                      DSPSIZ(24 80 *DS3)                  
+     A                                      PRINT                               
+     A                                      CF01(01)                            
+     A                                      CF03(03)                            
+     A                                      CF12(12)                            
+     A*                                                                         
+     A          R DSP01                                                         
+     A*%%TS  SD  20000119  075717  JROCKWELL   REL-V4R4M0  5769-PW1             
+     A                                      BLINK                               
+     A                                      OVERLAY                             
+     A                                      CSRLOC(VDROW      VDCOL)            
+     A                                      RTNCSRLOC(&REC &FLD)                
+     A                                      RTNCSRLOC(*MOUSE &ROW &COL)         
+     A            REC           10A  H                                          
+     A            FLD           10A  H                                          
+     A            ROW            3S 0H                                          
+     A            COL            3S 0H                                          
+     A            VDROW          3Y 0H                                          
+     A            VDCOL          3Y 0H                                          
+     A            XXED01         1A  P                                          
+     A            XXED02         1A  P                                          
+     A            XXED03         1A  P                                          
+     A                                  1  2SYSNAME                             
+     A                                  1 25' Enter Cost Center Information '   
+     A                                      DSPATR(HI)                          
+     A                                      DSPATR(RI)                          
+     A                                  1 71DATE                                
+     A                                      EDTWRD('  /  /  ')                  
+     A                                  2  2USER                                
+     A                                  2 71TIME                                
+     A                                  4  2'Company . . . . . . . . .'         
+     A            DFCMPX         5Y 0O  4 28EDTCDE(Z)                           
+     A            DFCMPN        40A  O  4 34                                    
+     A                                  6  2'Cost Center . . . . . . .'         
+     A            DFUNQX         5Y 0B  6 28DSPATR(&XXED03) EDTCDE(Z)           
+     A                                  8  2'Cost Center Description .'         
+     A            DFNMEX        40A  B  8 28DSPATR(&XXED01)                     
+     A                                      CHECK(LC)                           
+     A                                 10  2'Record Active . . . . . .'         
+     A            DFDSPX         1A  B 10 28DSPATR(&XXED02)                     
+     A                                 23  2'F1=Help'                           
+     A                                      DSPATR(HI)                          
+     A                                 23 11'F3=Exit'                           
+     A                                      DSPATR(HI)                          
+     A                                 23 20'F12=Return'                        
+     A                                      DSPATR(HI)                          
+     A*                                                                         
+     A          R SFLMSG                    SFL                                 
+     A                                      TEXT('MESSAGE SUBFILE')             
+     A                                      SFLMSGRCD(24)                       
+     A            MSGK                      SFLMSGKEY                           
+     A            MSGQ                      SFLPGMQ(10)                         
+     A*                                                                         
+     A          R SFLCTLM                   SFLCTL(SFLMSG)                      
+     A                                      TEXT('MESSAGE SUBFILE CONTROL')     
+     A                                      OVERLAY                             
+     A                                      SFLDSP                              
+     A N90                                  SFLDSPCTL                           
+     A N90                                  SFLINZ                              
+     A N90                                  SFLEND                              
+     A                                      SFLSIZ(0004)                        
+     A                                      SFLPAG(0001)                        
+     A            MSGQ                      SFLPGMQ(10)                         

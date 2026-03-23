@@ -1,0 +1,133 @@
+﻿     A*****************************************************************         
+     A* FastBreed Technologies, Inc. © 2000                           *         
+     A*****************************************************************         
+     A*****************************************************************         
+     A**                                                             **         
+     A** OBJECT ID: IS929D2                                          **         
+     A**                                                             **         
+     A** OBJECT DESCRIPTION: CHANGE EXPENSES                         **         
+     A**                                                             **         
+     A** MOD#    DATE      DESCRIPTION                               **         
+     A** ----  --------    ----------------------------------------- **         
+     A**                                                             **         
+     A*****************************************************************         
+     A*                                                                         
+     A*%%EC                                                                     
+     A                                      DSPSIZ(24 80 *DS3)                  
+     A                                      PRINT(*LIBL/QSYSPRT)                
+     A                                      CF01(01 'Help')                     
+     A                                      CF03(03 'Exit')                     
+     A                                      CF23(23 'MOUSE PRESSSED')           
+     A                                      MOUBTN(*URR CF01)                   
+     A                                      MOUBTN(*ULR CF23)                   
+     A*                                                                         
+     A          R WDW006S                   SFL                                 
+     A*%%TS  SD  20000117  084605  JROCKWELL   REL-V4R4M0  5769-PW1             
+     A            HDDTE1         8Y 0H                                          
+     A            HDUNQ1         5Y 0H                                          
+     A            SELIO          1Y 0B  9  3VALUES(0 1 4)                       
+     A                                      EDTCDE(4)                           
+     A            VDDTE1         6Y 0O  9  7EDTWRD('     0')                    
+     A            VDCDE1         3Y 0O  9 15EDTWRD('  0')                       
+     A            VDTYP1        20A  O  9 19                                    
+     A            VDAMT1         8Y 2O  9 41EDTWRD('     0.  ')                 
+     A            VDPUNQ         5Y 0O  9 55EDTWRD('    0')                     
+     A            VDCUNQ         5Y 0O  9 69EDTWRD('    0')                     
+     A*                                                                         
+     A          R WDW006C                   SFLCTL(WDW006S)                     
+     A*%%TS  SD  20000117  084931  JROCKWELL   REL-V4R4M0  5769-PW1             
+     A                                      SFLSIZ(0014)                        
+     A                                      SFLPAG(0013)                        
+     A                                      CF12(12 'Return')                   
+     A                                      PAGEDOWN                            
+     A                                      BLINK                               
+     A                                      OVERLAY                             
+     A  42                                  SFLDSP                              
+     A  41                                  SFLDSPCTL                           
+     A  40                                  SFLCLR                              
+     A  99                                  SFLEND(*MORE)                       
+     A                                      CSRLOC(VDROW      VDCOL)            
+     A                                      RTNCSRLOC(&REC &FLD)                
+     A                                      RTNCSRLOC(*MOUSE &ROW &COL)         
+     A            REC           10A  H                                          
+     A            FLD           10A  H                                          
+     A            ROW            3S 0H                                          
+     A            COL            3S 0H                                          
+     A            VDROW          3Y 0H                                          
+     A            VDCOL          3Y 0H                                          
+     A            XXED01         1A  P                                          
+     A            XXED02         1A  P                                          
+     A            XXED03         1A  P                                          
+     A            RCDNBR         4S 0H      SFLRCDNBR(CURSOR)                   
+     A                                  1  2SYSNAME                             
+     A                                  1 32' Change Expenses '                 
+     A                                      DSPATR(HI)                          
+     A                                      DSPATR(RI)                          
+     A                                  1 71DATE                                
+     A                                      EDTWRD('  /  /  ')                  
+     A                                  2  2USER                                
+     A                                  2 71TIME                                
+     A                                  4  2'Comp:'                             
+     A                                      DSPATR(HI)                          
+     A            DFCMPX         5Y 0O  4  8EDTCDE(Z)                           
+     A                                  4 14'Employee:'                         
+     A                                      DSPATR(HI)                          
+     A            DFNBRX         8Y 0O  4 24EDTCDE(Z)                           
+     A            DFNMEX        40A  O  4 33                                    
+     A                                  6  2'Date Range:'                       
+     A                                      DSPATR(HI)                          
+     A            DFDTE1         6Y 0B  6 14DSPATR(&XXED01) EDTCDE(Z)           
+     A                                  6 21'-'                                 
+     A                                      DSPATR(HI)                          
+     A            DFDTE2         6Y 0B  6 23DSPATR(&XXED02) EDTCDE(Z)           
+     A                                  6 33'Exp Code:'                         
+     A                                      DSPATR(HI)                          
+     A            DFCDEX         3Y 0B  6 43DSPATR(&XXED03)                     
+     A                                  8  2'Sel'                               
+     A                                      DSPATR(HI)                          
+     A                                      DSPATR(UL)                          
+     A                                  8  7' Date '                            
+     A                                      DSPATR(HI)                          
+     A                                      DSPATR(UL)                          
+     A                                  8 15'Expense Description     '          
+     A                                      DSPATR(HI)                          
+     A                                      DSPATR(UL)                          
+     A                                  8 44'Amount'                            
+     A                                      DSPATR(HI)                          
+     A                                      DSPATR(UL)                          
+     A                                  8 54'Project#'                          
+     A                                      DSPATR(HI)                          
+     A                                      DSPATR(UL)                          
+     A                                  8 66'Cost Center'                       
+     A                                      DSPATR(HI)                          
+     A                                      DSPATR(UL)                          
+     A*                                                                         
+     A          R CMD                                                           
+     A N28                                  OVERLAY                             
+     A                                 23  2'1=Select'                          
+     A                                      DSPATR(HI)                          
+     A                                 23 12'4=Delete'                          
+     A                                      DSPATR(HI)                          
+     A                                 23 22'F1=Help'                           
+     A                                      DSPATR(HI)                          
+     A                                 23 31'F3=Exit'                           
+     A                                      DSPATR(HI)                          
+     A                                 23 40'F12=Return'                        
+     A                                      DSPATR(HI)                          
+     A*                                                                         
+     A          R SFLMSG                    SFL                                 
+     A                                      TEXT('MESSAGE SUBFILE')             
+     A                                      SFLMSGRCD(24)                       
+     A            MSGK                      SFLMSGKEY                           
+     A            MSGQ                      SFLPGMQ(10)                         
+     A*                                                                         
+     A          R SFLCTLM                   SFLCTL(SFLMSG)                      
+     A                                      TEXT('MESSAGE SUBFILE CONTROL')     
+     A                                      OVERLAY                             
+     A                                      SFLDSP                              
+     A N90                                  SFLDSPCTL                           
+     A N90                                  SFLINZ                              
+     A N90                                  SFLEND                              
+     A                                      SFLSIZ(0004)                        
+     A                                      SFLPAG(0001)                        
+     A            MSGQ                      SFLPGMQ(10)                         

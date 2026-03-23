@@ -1,0 +1,161 @@
+﻿     A*****************************************************************         
+     A* FastBreed Technologies, Inc. © 2000                           *         
+     A*****************************************************************         
+     A*****************************************************************         
+     A**                                                             **         
+     A** OBJECT ID: IS929D1                                          **         
+     A**                                                             **         
+     A** OBJECT DESCRIPTION: ENTER EXPENSES                          **         
+     A**                                                             **         
+     A** MOD#    DATE      DESCRIPTION                               **         
+     A** ----  --------    ----------------------------------------- **         
+     A**                                                             **         
+     A*****************************************************************         
+     A*                                                                         
+     A*%%EC                                                                     
+     A                                      DSPSIZ(24 80 *DS3)                  
+     A                                      PRINT(*LIBL/QSYSPRT)                
+     A                                      CF01(01 'Help')                     
+     A                                      CF02(02 'Search')                   
+     A                                      CF03(03 'Exit')                     
+     A                                      CF23(23 'MOUSE PRESSSED')           
+     A                                      MOUBTN(*URR CF01)                   
+     A                                      MOUBTN(*ULR CF23)                   
+     A*                                                                         
+     A          R WDW006S                   SFL                                 
+     A*%%TS  SD  20000114  133752  JROCKWELL   REL-V4R4M0  5769-PW1             
+     A            VDUNQ1         5Y 0H                                          
+     A            VDCDE1         3Y 0O 11  3EDTWRD('  0')                       
+     A            VDTYP1        20A  O 11  9                                    
+     A            VDDES1        40A  O 11 32                                    
+     A            VDMLT1         4Y 2O 11 76EDTWRD(' 0.  ')                     
+     A*                                                                         
+     A          R WDW006C                   SFLCTL(WDW006S)                     
+     A*%%TS  SD  20000114  145018  JROCKWELL   REL-V4R4M0  5769-PW1             
+     A                                      SFLSIZ(0012)                        
+     A                                      SFLPAG(0011)                        
+     A                                      CF07(07 'Change')                   
+     A                                      CF08(08 'Add Projects')             
+     A                                      CF09(09 'Add Cost Centers')         
+     A                                      CF12(12 'Return')                   
+     A                                      PAGEDOWN                            
+     A                                      BLINK                               
+     A                                      OVERLAY                             
+     A  42                                  SFLDSP                              
+     A  41                                  SFLDSPCTL                           
+     A  40                                  SFLCLR                              
+     A  99                                  SFLEND(*MORE)                       
+     A                                      CSRLOC(VDROW      VDCOL)            
+     A                                      RTNCSRLOC(&REC &FLD)                
+     A                                      RTNCSRLOC(*MOUSE &ROW &COL)         
+     A            REC           10A  H                                          
+     A            FLD           10A  H                                          
+     A            ROW            3S 0H                                          
+     A            COL            3S 0H                                          
+     A            VDROW          3Y 0H                                          
+     A            VDCOL          3Y 0H                                          
+     A            XXED01         1A  P                                          
+     A            XXED02         1A  P                                          
+     A            XXED03         1A  P                                          
+     A            XXED04         1A  P                                          
+     A            XXED05         1A  P                                          
+     A            XXED06         1A  P                                          
+     A            XXED07         1A  P                                          
+     A            XXED08         1A  P                                          
+     A            XXED09         1A  P                                          
+     A            XXED10         1A  P                                          
+     A            RCDNBR         4S 0H      SFLRCDNBR(CURSOR)                   
+     A                                  1  2SYSNAME                             
+     A                                  1 32' Enter Expenses '                  
+     A                                      DSPATR(HI)                          
+     A                                      DSPATR(RI)                          
+     A                                  1 71DATE                                
+     A                                      EDTWRD('  /  /  ')                  
+     A                                  2  2USER                                
+     A                                  2 71TIME                                
+     A                                  4  2'Cmp Nbr:'                          
+     A                                      DSPATR(HI)                          
+     A            DFCMPX         5Y 0B  4 11DSPATR(&XXED01)                     
+     A                                      CHECK(ER)                           
+     A                                      EDTWRD('    0')                     
+     A                                  4 18'Emp Nbr:'                          
+     A                                      DSPATR(HI)                          
+     A            DFNBRX         8Y 0B  4 27DSPATR(&XXED02)                     
+     A                                      EDTWRD('       0')                  
+     A                                  4 37'Proj:'                             
+     A                                      DSPATR(HI)                          
+     A            DFPRJX         5Y 0B  4 43DSPATR(&XXED06)                     
+     A                                      EDTWRD('    0')                     
+     A                                  4 51'Cost Ctr:'                         
+     A                                      DSPATR(HI)                          
+     A            DFCSTX         5Y 0B  4 61DSPATR(&XXED07)                     
+     A                                      EDTWRD('    0')                     
+     A                                  6  2'Exp Code:'                         
+     A                                      DSPATR(HI)                          
+     A            DFCDEX         3Y 0B  6 13DSPATR(&XXED03)                     
+     A                                      EDTWRD('  0')                       
+     A                                  6 18'Amount:'                           
+     A                                      DSPATR(HI)                          
+     A            DFAMTX         8Y 2B  6 26DSPATR(&XXED04)                     
+     A                                      EDTWRD('     0.  ')                 
+     A                                  6 37'Date:'                             
+     A                                      DSPATR(HI)                          
+     A            DFDTEX         6Y 0B  6 43DSPATR(&XXED05)                     
+     A                                      EDTWRD('     0')                    
+     A                                  6 51'From:'                             
+     A                                      DSPATR(HI)                          
+     A            DFLOC1         9   B  6 57DSPATR(&XXED09)                     
+     A                                  6 68'To:'                               
+     A                                      DSPATR(HI)                          
+     A            DFLOC2         9   B  6 72DSPATR(&XXED10)                     
+     A                                  8  2'Details:'                          
+     A                                      DSPATR(HI)                          
+     A            DFDETX        60A  B  8 11DSPATR(&XXED08) CHECK(LC)           
+     A                                 10  2'Code'                              
+     A                                      DSPATR(HI)                          
+     A                                      DSPATR(UL)                          
+     A                                 10  9'Expense Type        '              
+     A                                      DSPATR(HI)                          
+     A                                      DSPATR(UL)                          
+     A                                 10 32'Expanded Description              -
+     A                                            '                             
+     A                                      DSPATR(HI)                          
+     A                                      DSPATR(UL)                          
+     A                                 10 76'Mult '                             
+     A                                      DSPATR(HI)                          
+     A                                      DSPATR(UL)                          
+     A*                                                                         
+     A          R CMD                                                           
+     A*%%TS  SD  20000119  112804  JROCKWELL   REL-V4R4M0  5769-PW1             
+     A N28                                  OVERLAY                             
+     A                                 23  2'F1=Help'                           
+     A                                      DSPATR(HI)                          
+     A                                 23 11'F2=Search'                         
+     A                                      DSPATR(HI)                          
+     A                                 23 22'F3=Exit'                           
+     A                                      DSPATR(HI)                          
+     A                                 23 31'F7=Chg Exp'                        
+     A                                      DSPATR(HI)                          
+     A                                 23 43'F8=Add Proj'                       
+     A                                      DSPATR(HI)                          
+     A                                 23 56'F9=Add Cst Ctr'                    
+     A                                      DSPATR(HI)                          
+     A                                 23 72'F12=Rtn'                           
+     A                                      DSPATR(HI)                          
+     A*                                                                         
+     A          R SFLMSG                    SFL                                 
+     A                                      TEXT('MESSAGE SUBFILE')             
+     A                                      SFLMSGRCD(24)                       
+     A            MSGK                      SFLMSGKEY                           
+     A            MSGQ                      SFLPGMQ(10)                         
+     A*                                                                         
+     A          R SFLCTLM                   SFLCTL(SFLMSG)                      
+     A                                      TEXT('MESSAGE SUBFILE CONTROL')     
+     A                                      OVERLAY                             
+     A                                      SFLDSP                              
+     A N90                                  SFLDSPCTL                           
+     A N90                                  SFLINZ                              
+     A N90                                  SFLEND                              
+     A                                      SFLSIZ(0004)                        
+     A                                      SFLPAG(0001)                        
+     A            MSGQ                      SFLPGMQ(10)                         

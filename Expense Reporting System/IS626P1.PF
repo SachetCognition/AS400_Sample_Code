@@ -1,0 +1,48 @@
+﻿     A*****************************************************************         
+     A* FastBreed Technologies, Inc. © 2000                           *         
+     A*****************************************************************         
+     A*****************************************************************         
+     A*                                                               *         
+     A*  OBJECT ID: IS626P1                                           *         
+     A*                                                               *         
+     A*  OBJECT DESCRIPTION: PROJECT MASTER FILE                      *         
+     A*                                                               *         
+     A*  MOD#   DATE  PGMR DESCRIPTION                                *         
+     A*  ----  ------ ---- -----------------------------------------  *         
+     A*                                                               *         
+     A*****************************************************************         
+     A*                                                                         
+     A*                                                                         
+     A          R R626P1                    TEXT('Project Master File')         
+     A*                                                                         
+     A            CMPUNQ         5S 0       TEXT('Company Unique Number')       
+     A            PRJUNQ         5S 0       TEXT('Project Unique Number')       
+     A            PRJNME        40A         TEXT('Project Description')         
+     A            PRJDEM         8S 2       TEXT('Project Per Diem')            
+     A            PRJFRM         1A         TEXT('Per Diem Firm Flag')          
+     A            PRJDSP         1A         TEXT('Project Active')              
+     A*                                                                         
+     A** Tracking Information                                                   
+     A            PRJCBY        10A         TEXT('Created By                  ')
+     A            PRJCDT         8S 0       TEXT('Created Date                ')
+     A            PRJCTM         6S 0       TEXT('Created Time                ')
+     A            PRJCAM         1A         TEXT('Created AM/PM               ')
+     A*                                                                         
+     A            PRJUBY        10A         TEXT('Updated By                  ')
+     A            PRJUDT         8S 0       TEXT('Updated Date                ')
+     A            PRJUTM         6S 0       TEXT('Updated Time                ')
+     A            PRJUAM         1A         TEXT('Updated AM/PM               ')
+     A*                                                                         
+     A            PRJDBY        10A         TEXT('Deleted By                  ')
+     A            PRJDDT         8S 0       TEXT('Deleted Date                ')
+     A            PRJDTM         6S 0       TEXT('Deleted Time                ')
+     A            PRJDAM         1A         TEXT('Deleted AM/PM               ')
+     A*                                                                         
+     A            PRJUNB        10A         TEXT('Undeleted By                ')
+     A            PRJUND         8S 0       TEXT('Undeleted Date              ')
+     A            PRJUNT         6S 0       TEXT('Undeleted Time              ')
+     A            PRJUNA         1A         TEXT('Undeleted AM/PM             ')
+     A*                                                                         
+     A          K CMPUNQ                                                        
+     A          K PRJNME                                                        
+     A*                                                                         

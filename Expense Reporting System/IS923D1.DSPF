@@ -1,0 +1,86 @@
+﻿     A*****************************************************************         
+     A* FastBreed Technologies, Inc. © 2000                           *         
+     A*****************************************************************         
+     A*****************************************************************         
+     A*                                                              **         
+     A*  OBJECT ID: IS923D1                                          **         
+     A*                                                              **         
+     A*  OBJECT DESCRIPTION: PRINT EXPENSE REPORT                    **         
+     A*                                                              **         
+     A*  MOD#   DATE  PGMR DESCRIPTION                               **         
+     A*  ----  ------ ---- ----------------------------------------- **         
+     A*                                                              **         
+     A*****************************************************************         
+     A*                                                                         
+     A*%%EC                                                                     
+     A                                      DSPSIZ(24 80 *DS3)                  
+     A                                      REF(*LIBL/OLSTENFILE)               
+     A                                      PRINT                               
+     A                                      MOUBTN(*URR CF01)                   
+     A                                      CF01(01 'Help')                     
+     A                                      CF03(03 'Exit')                     
+     A                                      CF12(12 'Return')                   
+     A                                      MOUBTN(*URR CF01)                   
+     A                                      MOUBTN(*ULR CF23)                   
+     A                                      CF23(23 'MOUSE PRESSSED')           
+     A*                                                                         
+     A          R SCRN01                                                        
+     A*%%TS  SD  20000117  115504  JROCKWELL   REL-V4R4M0  5769-PW1             
+     A                                      OVERLAY                             
+     A                                      CSRLOC(VDROW      VDCOL)            
+     A                                      RTNCSRLOC(&REC &FLD)                
+     A                                      RTNCSRLOC(*MOUSE &ROW &COL)         
+     A            REC           10A  H                                          
+     A            FLD           10A  H                                          
+     A            ROW            3S 0H                                          
+     A            COL            3S 0H                                          
+     A            VDROW          3Y 0H                                          
+     A            VDCOL          3Y 0H                                          
+     A            XXED01         1A  P                                          
+     A            XXED02         1A  P                                          
+     A            XXED03         1A  P                                          
+     A            XXED04         1A  P                                          
+     A                                  1  2SYSNAME                             
+     A                                  1 31' Print Expense Report '            
+     A                                      DSPATR(HI)                          
+     A                                      DSPATR(RI)                          
+     A                                  1 71DATE                                
+     A                                      EDTWRD('  /  /  ')                  
+     A                                  2  2USER                                
+     A                                  2 71TIME                                
+     A                                  4  2'Company . . . .'                   
+     A            DFCMPX         5Y 0B  4 18DSPATR(&XXED01)                     
+     A                                      EDTWRD('    0')                     
+     A                                  6  2'Employee. . . .'                   
+     A            DFNBRX         8Y 0B  6 18DSPATR(&XXED02)                     
+     A                                      EDTWRD('       0')                  
+     A            DFNMEX        40A  O  6 27                                    
+     A                                  8  2'From Date . . .'                   
+     A            DFBEGX         6Y 0B  8 18DSPATR(&XXED03)                     
+     A                                      EDTWRD('     0')                    
+     A                                 10  2'Thru Date . . .'                   
+     A            DFENDX         6Y 0B 10 18DSPATR(&XXED04)                     
+     A                                      EDTWRD('     0')                    
+     A                                 23  2'F1=Help'                           
+     A                                      DSPATR(HI)                          
+     A                                 23 11'F3=Exit'                           
+     A                                      DSPATR(HI)                          
+     A                                 23 20'F12=Return'                        
+     A                                      DSPATR(HI)                          
+     A*                                                                         
+     A          R SFLMSG                    SFL                                 
+     A                                      TEXT('MESSAGE SUBFILE')             
+     A                                      SFLMSGRCD(24)                       
+     A            MSGK                      SFLMSGKEY                           
+     A            MSGQ                      SFLPGMQ(10)                         
+     A*                                                                         
+     A          R SFLCTLM                   SFLCTL(SFLMSG)                      
+     A                                      TEXT('MESSAGE SUBFILE CONTROL')     
+     A                                      OVERLAY                             
+     A                                      SFLDSP                              
+     A N90                                  SFLDSPCTL                           
+     A N90                                  SFLINZ                              
+     A N90                                  SFLEND                              
+     A                                      SFLSIZ(0004)                        
+     A                                      SFLPAG(0001)                        
+     A            MSGQ                      SFLPGMQ(10)                         

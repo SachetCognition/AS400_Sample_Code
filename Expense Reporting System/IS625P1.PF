@@ -1,0 +1,66 @@
+﻿     A*****************************************************************         
+     A* FastBreed Technologies, Inc. © 2000                           *         
+     A*****************************************************************         
+     A*****************************************************************         
+     A*                                                               *         
+     A*  OBJECT ID: IS625P1                                           *         
+     A*                                                               *         
+     A*  OBJECT DESCRIPTION: COMPANY MASTER FILE                      *         
+     A*                                                               *         
+     A*  MOD#   DATE  PGMR DESCRIPTION                                *         
+     A*  ----  ------ ---- -----------------------------------------  *         
+     A*                                                               *         
+     A*****************************************************************         
+     A*                                                                         
+     A*                                                                         
+     A          R R625P1                    TEXT('Company Master File       ')  
+     A*                                                                         
+     A            CMPUNQ         5S 0       TEXT('Company Unique Number     ')  
+     A            CMPNME        40A         TEXT('Company Name              ')  
+     A            CMPAD1        25A         TEXT('Address Line 1            ')  
+     A            CMPAD2        25A         TEXT('Address Line 2            ')  
+     A            CMPCTY        20A         TEXT('City                      ')  
+     A            CMPSTE         2A         TEXT('State                     ')  
+     A            CMPZP5         5S 0       TEXT('Zip Code                  ')  
+     A            CMPZP4         4S 0       TEXT('Zip Code                  ')  
+     A            CMPCN1        40A         TEXT('Contact #1                ')  
+     A            CMPPH1        15A         TEXT('Phone #1                  ')  
+     A            CMPFX1        15A         TEXT('Fax #1                    ')  
+     A            CMPPG1        15A         TEXT('Pager #1                  ')  
+     A            CMPCN2        40A         TEXT('Contact #2                ')  
+     A            CMPPH2        15A         TEXT('Phone #2                  ')  
+     A            CMPFX2        15A         TEXT('Fax #2                    ')  
+     A            CMPPG2        15A         TEXT('Pager #2                  ')  
+     A*                                                                         
+     A            CMPDT1        70A         TEXT('Misc Info #1')                
+     A            CMPDT2        70A         TEXT('Misc Info #2')                
+     A            CMPDT3        70A         TEXT('Misc Info #3')                
+     A            CMPDT4        70A         TEXT('Misc Info #4')                
+     A            CMPDEM         8S 2       TEXT('Company Per Diem')            
+     A            CMPFRM         1A         TEXT('Per Diem Firm Flag')          
+     A            CMPRQ1         1A         TEXT('Project Numbers Required')    
+     A            CMPRQ2         1A         TEXT('Cost Centers Required')       
+     A*                                                                         
+     A** Tracking Information                                                   
+     A            CMPCBY        10A         TEXT('Created By')                  
+     A            CMPCDT         8S 0       TEXT('Created Date')                
+     A            CMPCTM         6S 0       TEXT('Created Time')                
+     A            CMPCAM         1A         TEXT('Created AM/PM')               
+     A*                                                                         
+     A            CMPUBY        10A         TEXT('Updated By')                  
+     A            CMPUDT         8S 0       TEXT('Updated Date')                
+     A            CMPUTM         6S 0       TEXT('Updated Time')                
+     A            CMPUAM         1A         TEXT('Updated AM/PM')               
+     A*                                                                         
+     A            CMPDBY        10A         TEXT('Deleted By')                  
+     A            CMPDDT         8S 0       TEXT('Deleted Date')                
+     A            CMPDTM         6S 0       TEXT('Deleted Time')                
+     A            CMPDAM         1A         TEXT('Deleted AM/PM')               
+     A*                                                                         
+     A            CMPUNB        10A         TEXT('Undeleted By')                
+     A            CMPUND         8S 0       TEXT('Undeleted Date')              
+     A            CMPUNT         6S 0       TEXT('Undeleted Time')              
+     A            CMPUNA         1A         TEXT('Undeleted AM/PM')             
+     A*                                                                         
+     A          K CMPUNQ                                                        
+     A*                                                                         

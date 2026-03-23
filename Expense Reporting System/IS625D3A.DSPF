@@ -1,0 +1,101 @@
+﻿     A*%%TS  SD  20050717  120025  JMROCKWE    REL-V5R3M0  5722-WDS             
+     A*****************************************************************         
+     A* FastBreed Technologies, Inc. © 2005                           *         
+     A*****************************************************************         
+     A*****************************************************************         
+     A**                                                             **         
+     A** OBJECT ID: IS625D3A                                         **         
+     A**                                                             **         
+     A** OBJECT DESCRIPTION: DEFINE USER ACCESS TO MENU              **         
+     A**                                                             **         
+     A** MOD#    DATE      DESCRIPTION                               **         
+     A** ----  --------    ----------------------------------------- **         
+     A**       07/17/05    FILE CREATION                             **         
+     A**                                                             **         
+     A*****************************************************************         
+     A*                                                                         
+     A*%%EC                                                                     
+     A                                      DSPSIZ(24 80 *DS3)                  
+     A                                      PRINT(*LIBL/QSYSPRT)                
+     A                                      CF01(01 'Help')                     
+     A                                      CF03(03 'Exit')                     
+     A*                                                                         
+     A          R WDW006S                   SFL                                 
+     A*%%TS  SD  20050717  120025  JMROCKWE    REL-V5R3M0  5722-WDS             
+     A            SELIO          1Y 0B  7  3VALUES(0 1 2 4)                     
+     A                                      EDTCDE(4)                           
+     A            VDUSR1        10A  O  7  9                                    
+     A*                                                                         
+     A          R WDW006C                   SFLCTL(WDW006S)                     
+     A*%%TS  SD  20050717  120025  JMROCKWE    REL-V5R3M0  5722-WDS             
+     A                                      SFLSIZ(0015)                        
+     A                                      SFLPAG(0014)                        
+     A                                      CF06(06 'Add')                      
+     A                                      CF12(12 'Return')                   
+     A                                      PAGEDOWN                            
+     A                                      BLINK                               
+     A                                      OVERLAY                             
+     A  42                                  SFLDSP                              
+     A  41                                  SFLDSPCTL                           
+     A  40                                  SFLCLR                              
+     A  99                                  SFLEND(*MORE)                       
+     A                                      CSRLOC(VDROW      VDCOL)            
+     A                                      RTNCSRLOC(&REC &FLD)                
+     A                                      RTNCSRLOC(*MOUSE &ROW &COL)         
+     A            REC           10A  H                                          
+     A            FLD           10A  H                                          
+     A            ROW            3S 0H                                          
+     A            COL            3S 0H                                          
+     A            VDROW          3Y 0H                                          
+     A            VDCOL          3Y 0H                                          
+     A            RCDNBR         4S 0H      SFLRCDNBR(CURSOR)                   
+     A                                  1  2SYSNAME                             
+     A                                  1 28' Define User Access to Menu '      
+     A                                      DSPATR(HI)                          
+     A                                      DSPATR(RI)                          
+     A                                  1 71DATE                                
+     A                                      EDTWRD('  /  /  ')                  
+     A                                  2  2USER                                
+     A                                  2 71TIME                                
+     A                                  4  2'Position to User:'                 
+     A                                      DSPATR(HI)                          
+     A            DFUSRX        10A  B  4 20CHECK(LC)                           
+     A                                  6  2'Sel'                               
+     A                                      DSPATR(HI)                          
+     A                                      DSPATR(UL)                          
+     A                                  6  8'User Profile'                      
+     A                                      DSPATR(HI)                          
+     A                                      DSPATR(UL)                          
+     A*                                                                         
+     A          R CMD                                                           
+     A*%%TS  SD  20000707  165938  JROCKWELL   REL-V4R4M0  5769-PW1             
+     A N28                                  OVERLAY                             
+     A                                 23  2'1=Select'                          
+     A                                      DSPATR(HI)                          
+     A                                 23 12'4=Delete'                          
+     A                                      DSPATR(HI)                          
+     A                                 23 22'F1=Help'                           
+     A                                      DSPATR(HI)                          
+     A                                 23 31'F3=Exit'                           
+     A                                      DSPATR(HI)                          
+     A                                 23 40'F6=Add'                            
+     A                                      DSPATR(HI)                          
+     A                                 23 48'F12=Return'                        
+     A                                      DSPATR(HI)                          
+     A*                                                                         
+     A          R SFLMSG                    SFL                                 
+     A                                      TEXT('MESSAGE SUBFILE')             
+     A                                      SFLMSGRCD(24)                       
+     A            MSGK                      SFLMSGKEY                           
+     A            MSGQ                      SFLPGMQ(10)                         
+     A*                                                                         
+     A          R SFLCTLM                   SFLCTL(SFLMSG)                      
+     A                                      TEXT('MESSAGE SUBFILE CONTROL')     
+     A                                      OVERLAY                             
+     A                                      SFLDSP                              
+     A N90                                  SFLDSPCTL                           
+     A N90                                  SFLINZ                              
+     A N90                                  SFLEND                              
+     A                                      SFLSIZ(0004)                        
+     A                                      SFLPAG(0001)                        
+     A            MSGQ                      SFLPGMQ(10)                         

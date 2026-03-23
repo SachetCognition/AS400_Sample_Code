@@ -1,0 +1,123 @@
+﻿     A*%%TS  SD  20000304  120157  JROCKWELL   REL-V4R4M0  5769-PW1             
+     A*****************************************************************         
+     A* FastBreed Technologies, Inc. © 2000                           *         
+     A*****************************************************************         
+     A*****************************************************************         
+     A*                                                              **         
+     A*  OBJECT ID: IS923D5                                          **         
+     A*                                                              **         
+     A*  OBJECT DESCRIPTION: PRINT EXPENSE SYSTEM REPORTS            **         
+     A*                                                              **         
+     A*  MOD#   DATE  PGMR DESCRIPTION                               **         
+     A*  ----  ------ ---- ----------------------------------------- **         
+     A*                                                              **         
+     A*****************************************************************         
+     A*                                                                         
+     A*%%EC                                                                     
+     A                                      DSPSIZ(24 80 *DS3)                  
+     A                                      PRINT                               
+     A                                      MOUBTN(*URR CF01)                   
+     A                                      CF01(01 'Help')                     
+     A                                      CF02(02 'Search')                   
+     A                                      CF03(03 'Exit')                     
+     A                                      CF12(12 'Return')                   
+     A                                      MOUBTN(*URR CF01)                   
+     A                                      MOUBTN(*ULR CF23)                   
+     A                                      CF23(23 'MOUSE PRESSSED')           
+     A*                                                                         
+     A          R SCRN01                                                        
+     A*%%TS  SD  20000304  120157  JROCKWELL   REL-V4R4M0  5769-PW1             
+     A                                      OVERLAY                             
+     A                                      CSRLOC(VDROW      VDCOL)            
+     A                                      RTNCSRLOC(&REC &FLD)                
+     A                                      RTNCSRLOC(*MOUSE &ROW &COL)         
+     A            REC           10A  H                                          
+     A            FLD           10A  H                                          
+     A            ROW            3S 0H                                          
+     A            COL            3S 0H                                          
+     A            VDROW          3Y 0H                                          
+     A            VDCOL          3Y 0H                                          
+     A            XXED01         1A  P                                          
+     A            XXED02         1A  P                                          
+     A            XXED03         1A  P                                          
+     A                                  1  2SYSNAME                             
+     A                                  1 28' Expense System Reports '          
+     A                                      DSPATR(HI)                          
+     A                                      DSPATR(RI)                          
+     A                                  1 71DATE                                
+     A                                      EDTWRD('  /  /  ')                  
+     A                                  2  2USER                                
+     A                                  2 71TIME                                
+     A                                  4  2'Selection Criteria'                
+     A                                      DSPATR(HI)                          
+     A                                      DSPATR(UL)                          
+     A                                  5  2'Company . . . .'                   
+     A            DFCMPX         5Y 0B  5 18DSPATR(&XXED01)                     
+     A                                      EDTCDE(Z)                           
+     A                                  6  2'Project . . . .'                   
+     A            DFPUNQ         5Y 0B  6 18EDTCDE(Z)                           
+     A                                  7  2'Cost Center . .'                   
+     A            DFCUNQ         5Y 0B  7 18EDTCDE(Z)                           
+     A                                  8  2'Department. . .'                   
+     A            DFDPTX         6Y 0B  8 18EDTCDE(Z)                           
+     A                                  9  2'Employee. . . .'                   
+     A            DFNBRX         8Y 0B  9 18EDTCDE(Z)                           
+     A                                 10  2'Expense Code. .'                   
+     A            DFCDEX         3Y 0B 10 18EDTCDE(Z)                           
+     A                                 11  2'Date Range. . .'                   
+     A            DFBEGX         6Y 0B 11 18DSPATR(&XXED02)                     
+     A                                      EDTCDE(Z)                           
+     A            DFENDX         6Y 0B 11 25DSPATR(&XXED03)                     
+     A                                      EDTCDE(Z)                           
+     A                                 13  2'Report Selection'                  
+     A                                      DSPATR(HI)                          
+     A                                      DSPATR(UL)                          
+     A                                 14  2'Summary by Project. . . .'         
+     A            DFSEL1         1A  B 14 28                                    
+     A                                 14 35'Subtotal by Expense Code . .'      
+     A            DFSUB1         1A  B 14 64                                    
+     A                                 15  2'Summary by Cost Center. .'         
+     A            DFSEL2         1A  B 15 28                                    
+     A                                 15 35'Subtotal by Expense Code . .'      
+     A            DFSUB2         1A  B 15 64                                    
+     A                                 16  2'Summary by Department . .'         
+     A            DFSEL3         1A  B 16 28                                    
+     A                                 16 35'Subtotal by Expense Code . .'      
+     A            DFSUB3         1A  B 16 64                                    
+     A                                 17  2'Summary by Emp Nbr. . . .'         
+     A            DFSEL4         1A  B 17 28                                    
+     A                                 17 35'Subtotal by Expense Code . .'      
+     A            DFSUB4         1A  B 17 64                                    
+     A                                 19  2'Summary by Expense Code .'         
+     A            DFSEL5         1A  B 19 28                                    
+     A                                 20  2'Transactions by Date. . .'         
+     A            DFSEL6         1A  B 20 28                                    
+     A                                 23  2'F1=Help'                           
+     A                                      DSPATR(HI)                          
+     A                                 23 11'F2=Search'                         
+     A                                      DSPATR(HI)                          
+     A                                 23 22'F3=Exit'                           
+     A                                      DSPATR(HI)                          
+     A                                 23 31'F12=Return'                        
+     A                                      DSPATR(HI)                          
+     A                                 18  2'Summary by Emp Name . . .'         
+     A                                 18 35'Subtotal by Expense Code . .'      
+     A            DFSEL7         1   B 18 28                                    
+     A            DFSUB7         1   B 18 64                                    
+     A*                                                                         
+     A          R SFLMSG                    SFL                                 
+     A                                      TEXT('MESSAGE SUBFILE')             
+     A                                      SFLMSGRCD(24)                       
+     A            MSGK                      SFLMSGKEY                           
+     A            MSGQ                      SFLPGMQ(10)                         
+     A*                                                                         
+     A          R SFLCTLM                   SFLCTL(SFLMSG)                      
+     A                                      TEXT('MESSAGE SUBFILE CONTROL')     
+     A                                      OVERLAY                             
+     A                                      SFLDSP                              
+     A N90                                  SFLDSPCTL                           
+     A N90                                  SFLINZ                              
+     A N90                                  SFLEND                              
+     A                                      SFLSIZ(0004)                        
+     A                                      SFLPAG(0001)                        
+     A            MSGQ                      SFLPGMQ(10)                         

@@ -1,0 +1,30 @@
+﻿     A*****************************************************************         
+     A* FastBreed Technologies, Inc. © 2000                           *         
+     A*****************************************************************         
+     A*****************************************************************         
+     A*                                                               *         
+     A*  OBJECT ID: IS928P3                                           *         
+     A*                                                               *         
+     A*  OBJECT DESCRIPTION: EMPLOYEE CONVERSION FILE                 *         
+     A*                                                               *         
+     A*  MOD#   DATE  PGMR DESCRIPTION                                *         
+     A*  ----  ------ ---- -----------------------------------------  *         
+     A*                                                                         
+     A*****************************************************************         
+     A*                                                                         
+     A*                                                                         
+     A          R R928P3                    TEXT('Employee Conversion File')    
+     A*                                                                         
+     A            CMPUNQ         5S 0       TEXT('Company Unique Number')       
+     A            CNVFIL        10A         TEXT('File Name')                   
+     A            CNVMBR        10A         TEXT('File Member')                 
+     A            CNVNBR        10A         TEXT('Field - Emp Number')          
+     A            CNVNME        10A         TEXT('Field - Emp Name')            
+     A            CNVNML        10A         TEXT('Field - Emp Last Name')       
+     A            CNVNMF        10A         TEXT('Field - Emp First Name')      
+     A            CNVDPT        10A         TEXT('Field - Emp Dept')            
+     A            CNVPOS        10A         TEXT('Field - Emp Title')           
+     A            CNVACT        10A         TEXT('Field - Emp Active')          
+     A            CNVVAL        10A         TEXT('Field - Emp Active Value')    
+     A*                                                                         
+     A          K CMPUNQ                                                        

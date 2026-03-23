@@ -1,0 +1,76 @@
+﻿     A*%%TS  SD  20050718  091343  JMROCKWE    REL-V5R3M0  5722-WDS             
+     A*****************************************************************         
+     A* FastBreed Technologies, Inc. © 2000                           *         
+     A*****************************************************************         
+     A*****************************************************************         
+     A**                                                             **         
+     A** OBJECT ID: IS625D4B                                         **         
+     A**                                                             **         
+     A** OBJECT DESCRIPTION: DEFINE USER ACCESS TO COMPANIES - ADD   **         
+     A**                                                             **         
+     A** MOD#    DATE      DESCRIPTION                               **         
+     A** ----  --------    ----------------------------------------- **         
+     A**                                                             **         
+     A*****************************************************************         
+     A*                                                                         
+     A*%%EC                                                                     
+     A                                      DSPSIZ(24 80 *DS3)                  
+     A                                      PRINT                               
+     A                                      CF01(01)                            
+     A                                      CF03(03)                            
+     A                                      CF12(12)                            
+     A*                                                                         
+     A          R DSP01                                                         
+     A*%%TS  SD  20050718  091343  JMROCKWE    REL-V5R3M0  5722-WDS             
+     A                                      BLINK                               
+     A                                      OVERLAY                             
+     A                                      CSRLOC(VDROW      VDCOL)            
+     A                                      RTNCSRLOC(&REC &FLD)                
+     A                                      RTNCSRLOC(*MOUSE &ROW &COL)         
+     A            REC           10A  H                                          
+     A            FLD           10A  H                                          
+     A            ROW            3S 0H                                          
+     A            COL            3S 0H                                          
+     A            VDROW          3Y 0H                                          
+     A            VDCOL          3Y 0H                                          
+     A            XXED01         1A  P                                          
+     A            XXED02         1A  P                                          
+     A                                  1  2SYSNAME                             
+     A                                  1 19' Define User Access to Companies --
+     A                                       Add Mode '                         
+     A                                      DSPATR(HI)                          
+     A                                      DSPATR(RI)                          
+     A                                  1 71DATE                                
+     A                                      EDTWRD('  /  /  ')                  
+     A                                  2  2USER                                
+     A                                  2 71TIME                                
+     A                                  4  2'Company Nbr. . .'                  
+     A                                      DSPATR(HI)                          
+     A            DFUNQX         5Y 0B  4 19DSPATR(&XXED01)                     
+     A                                      EDTCDE(Z) CHECK(RB)                 
+     A                                  6  2'User Profile . .'                  
+     A                                      DSPATR(HI)                          
+     A            DFUSRX        10A  B  6 19DSPATR(&XXED02)                     
+     A                                 23  2'F1=Help'                           
+     A                                      DSPATR(HI)                          
+     A                                 23 11'F3=Exit'                           
+     A                                      DSPATR(HI)                          
+     A                                 23 20'F12=Return'                        
+     A                                      DSPATR(HI)                          
+     A*                                                                         
+     A          R SFLMSG                    SFL                                 
+     A                                      TEXT('MESSAGE SUBFILE')             
+     A                                      SFLMSGRCD(24)                       
+     A            MSGK                      SFLMSGKEY                           
+     A            MSGQ                      SFLPGMQ(10)                         
+     A*                                                                         
+     A          R SFLCTLM                   SFLCTL(SFLMSG)                      
+     A                                      TEXT('MESSAGE SUBFILE CONTROL')     
+     A                                      OVERLAY                             
+     A                                      SFLDSP                              
+     A N90                                  SFLDSPCTL                           
+     A N90                                  SFLINZ                              
+     A N90                                  SFLEND                              
+     A                                      SFLSIZ(0004)                        
+     A                                      SFLPAG(0001)                        
+     A            MSGQ                      SFLPGMQ(10)                         

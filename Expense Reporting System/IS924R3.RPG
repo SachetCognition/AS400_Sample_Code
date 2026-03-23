@@ -1,0 +1,176 @@
+﻿     H*****************************************************************         
+     H* FastBreed Technologies, Inc. © 2000                           *         
+     H*****************************************************************         
+     H*****************************************************************         
+     H**                                                             **         
+     H** OBJECT ID: IS924R3                                          **         
+     H**                                                             **         
+     H** OBJECT DESCRIPTION: EMPLOYEE NUMBER SEARCH                  **         
+     H**                                                             **         
+     H**                                                             **         
+     H*****************************************************************         
+     F*                                                                         
+     FIS928L1 IF  E           K        DISK                                     
+     FIS924D3 CF  E                    WORKSTN      KINFDS INFDS                
+     F                                        CRRN  KSFILE WDW006S              
+     I*                                                                         
+     I            DS                                                            
+     I                                        1  20 NCNAME                      
+     I                                        1  40 DSNAME                      
+     I*                                                                         
+     IINFDS       DS                                                            
+     I                                      369 369 KEY                         
+     I                                    B 378 3790PAGRRN                      
+     I*                                                                         
+     I              X'33'                 C         F03                         
+     I              X'F1'                 C         ENTER                       
+     I              X'F5'                 C         PAGEDN                      
+     I*                                                                         
+     C*****************************************************************         
+     C*  MAINLINE                                                     *         
+     C*****************************************************************         
+     C*                                                                         
+     C           EMKY01    SETLLR928P1                                          
+     C*                                                                         
+     C** Mainline logic.                                                        
+     C           KEY       DOUEQF03                                             
+     C*                                                                         
+     C** Fill subfile.                                                          
+     C                     EXSR S001                       LOAD SFL             
+     C*                                                                         
+     C** Display subfile.                                                       
+     C           KEY       DOUEQF03                                             
+     C                     WRITEWDW006W                                         
+     C*                                                                         
+     C** Check for existing subfile records to condition SFLDSP.                
+     C           CRRN      IFGT 0                                               
+     C                     MOVE *ON       *IN42                                 
+     C                     ELSE                                                 
+     C                     MOVE *OFF      *IN42                                 
+     C                     END                                                  
+     C*                                                                         
+     C                     MOVE *ON       *IN41                                 
+     C                     EXFMTWDW006C                                         
+     C                     MOVE *OFF      *IN41                                 
+     C*                                                                         
+     C** Exit or cancel request.                                                
+     C           KEY       IFEQ F03                                             
+     C                     LEAVE                                                
+     C                     ENDIF                                                
+     C*                                                                         
+     C           DSNAME    IFNE WKKEY1                                          
+     C                     MOVELDSNAME    WKKEY1                                
+     C                     EXSR S002                       REPOS SFL            
+     C                     LEAVE                                                
+     C                     ENDIF                                                
+     C*                                                                         
+     C** Init SFLRCDNBR value with PAGRRN value from I/O feedback area - the    
+     C** lowest subfile RRN on the current subfile display.  Ensures that       
+     C** proper page is redisplayed.                                            
+     C                     Z-ADDPAGRRN    RCDNBR                                
+     C*                                                                         
+     C** Page down for more records request.                                    
+     C           KEY       IFEQ PAGEDN                                          
+     C                     LEAVE                                                
+     C                     ENDIF                                                
+     C*                                                                         
+     C** Enter with no subfile records displayed.                               
+     C           KEY       IFEQ ENTER                                           
+     C           COUNT     ANDEQ0                                               
+     C                     EXSR S002                                            
+     C                     LEAVE                                                
+     C                     ENDIF                                                
+     C*                                                                         
+     C                     READCWDW006S                  98                     
+     C           *IN98     DOWEQ*OFF                                            
+     C           SELIO     IFEQ 1                                               
+     C                     MOVE VDUNQ1    WKUNQX                                
+     C                     MOVE VDNBR1    WKNBRX                                
+     C                     MOVE *ON       *INLR                                 
+     C                     RETRN                                                
+     C                     ENDIF                                                
+     C                     READCWDW006S                  98                     
+     C                     ENDDO                                                
+     C*                                                                         
+     C                     EXSR S002                                            
+     C                     EXSR S001                                            
+     C*                                                                         
+     C                     ENDDO                                                
+     C                     ENDDO                                                
+     C*                                                                         
+     C                     MOVE *ON       *INLR                                 
+     C                     RETRN                                                
+     C*                                                                         
+     C****************************************************************          
+     C*   S001: LOAD SUBFILE RECORDS                                 *          
+     C****************************************************************          
+     C*                                                                         
+     C           S001      BEGSR                                                
+     C*                                                                         
+     C                     Z-ADD1         COUNT   20                            
+     C           COUNT     DOUGT10                                              
+     C           T001      TAG                                                  
+     C           DFCMPX    READER928P1                   99                     
+     C*                                                                         
+     C           *IN99     IFEQ *ON                                             
+     C                     LEAVE                                                
+     C                     ENDIF                                                
+     C*                                                                         
+     C                     ADD  1         CRRN                                  
+     C                     CLEARSELIO                                           
+     C                     MOVE EMPUNQ    VDUNQ1                                
+     C                     MOVE EMPNBR    VDNBR1                                
+     C                     MOVELEMPNME    VDNME1                                
+     C                     WRITEWDW006S                                         
+     C                     ADD  1         COUNT                                 
+     C                     ENDDO                                                
+     C*                                                                         
+     C                     Z-ADDCRRN      RCDNBR                                
+     C*                                                                         
+     C           E001      ENDSR                                                
+     C*                                                                         
+     C****************************************************************          
+     C*   S002: REPOSITION SUBFILE                                   *          
+     C****************************************************************          
+     C*                                                                         
+     C           S002      BEGSR                                                
+     C*                                                                         
+     C                     MOVE *ON       *IN40                                 
+     C                     WRITEWDW006C                                         
+     C                     MOVE *OFF      *IN40                                 
+     C*                                                                         
+     C                     RESETCRRN                                            
+     C*                                                                         
+     C           EMKY01    SETLLR928P1                                          
+     C*                                                                         
+     C           E002      ENDSR                                                
+     C*                                                                         
+     C****************************************************************          
+     C*   INZSR: INITIALIZATION SUBROUTINE                           *          
+     C****************************************************************          
+     C*                                                                         
+     C           *INZSR    BEGSR                                                
+     C*                                                                         
+     C           *ENTRY    PLIST                                                
+     C                     PARM           WKCMP   5                             
+     C                     PARM           WKUNQX  5                             
+     C                     PARM           WKNBRX  8                             
+     C                     PARM           WKNMEX 40                             
+     C*                                                                         
+     C           EMKY01    KLIST                                                
+     C                     KFLD           DFCMPX                                
+     C                     KFLD           WKKEY1                                
+     C                     KFLD           WKKEY2                                
+     C*                                                                         
+     C                     MOVE WKCMP     DFCMPX  50                            
+     C                     MOVELWKNMEX    WKKEY1 40                             
+     C                     MOVELWKNMEX    DSNAME 40                             
+     C                     MOVE *ZEROS    WKKEY2  80                            
+     C*                                                                         
+     C                     WRITEBOTTOM                                          
+     C                     Z-ADD0         CRRN    50                            
+     C*                                                                         
+     C                     ENDSR                                                
+     C*                                                                         
+     C****************************************************************          
+     C****************************************************************          

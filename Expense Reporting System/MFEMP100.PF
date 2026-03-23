@@ -1,0 +1,7 @@
+﻿     A          R EMPMST                    TEXT('Employee Master')             
+     A            ACTIV          1A                                             
+     A            CMPNO          3S 0                                           
+     A            PLTNO          2S 0                                           
+     A            EMPNO          8S 0                                           
+     A            EMPNM         20A                                             
+     A            EMPFN         20A                                             
