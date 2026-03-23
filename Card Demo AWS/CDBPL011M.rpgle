@@ -167,8 +167,8 @@
              ExSR WrtAUT_UpdTRN_UpdACT;
              LeaveSR;
            Else;
-             If (CCM_EXPIRYYR < %SubDt(ORIGDATE:*Years)) or
-                ((CCM_EXPIRYYR = %SubDt(ORIGDATE:*Years)) and
+              If (CCM_EXPIRYYR < %REM(%SubDt(ORIGDATE:*Years):100)) or
+                ((CCM_EXPIRYYR = %REM(%SubDt(ORIGDATE:*Years):100)) and
                 (CCM_EXPIRYMO < %SubDt(ORIGDATE:*Months)));
                   AUT_RSPREASON = @CT(3);
                   ExSR WrtAUT_UpdTRN_UpdACT;
